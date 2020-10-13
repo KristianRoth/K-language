@@ -25,9 +25,10 @@ def test_function_call_params():
     code = _getTestCode("test3.k")
     ts = tokenify((code, []))
     assert len(ts) == 9
-
-    for i, t in enumerate(ts):
-        assert t == expected[i]
+    assert ts.count(("statement_start", "statement_start")) == 3
+    assert ts.count(("statement_end", "statement_end")) == 3
+    assert ts.count(("function_call", "test")) == 1
+    assert ts.count(('additional_parameter', 'aditional_parameter')) == 2
 
 def test_function_definition():
     code = _getTestCode("test4.k")
