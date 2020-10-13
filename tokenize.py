@@ -52,6 +52,7 @@ def expression(par):
         (func, code, end) = read(code, ":")
         ts.append(("function_call", func))
         while True:
+            ts.append(("additional_parameter", "aditional_parameter"))
             (code, ts) =  statement((code, ts))
             (lookup, code) = readWhile(code)
             if lookup != ",":

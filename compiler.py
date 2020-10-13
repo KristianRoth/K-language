@@ -35,12 +35,16 @@ def makeTree(ts, tree):
         elif key == "function_call":
             funcTree = Node("function_call")
             funcTree.addChild(Node(value))
-            (key, value), *ts = ts
-            if key != "statement_start":
-                raise ValueError("Function bondy is not a Statement '(' expected")
-            statementTree = Node("statement")
-            (ts, statementTree) = makeTree(ts, statementTree)
-            funcTree.addChild(statementTree)
+            while True:
+                if ts[0][0] != "additional_parameter":
+                    break
+                (key, value), *ts = ts
+                (key, value), *ts = ts
+                if key != "statement_start":
+                    raise ValueError("Function call parameter is not a Statement '(' expected")
+                statementTree = Node("statement")
+                (ts, statementTree) = makeTree(ts, statementTree)
+                funcTree.addChild(statementTree)
             tree.addChild(funcTree)
         elif key == "identifier":
             tree.addChild(Node("identifier").addChild(Node(value)))
