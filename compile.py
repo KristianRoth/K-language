@@ -1,12 +1,12 @@
 import sys
 from itertools import count
-from tokenize import tokenize, prettyPrint
+from tokenify import tokenify, prettyPrint
 from compiler import compiler
 
 
 
 def compile(code):
-    ts = tokenize((code, []))
+    ts = tokenify((code, []))
     print("tokenized:")
     prettyPrint(ts)
     code = compiler(ts)

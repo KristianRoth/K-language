@@ -86,7 +86,7 @@ def statement(par):
     return (code, ts)
 
 
-def tokenize(par):
+def tokenify(par):
     (code, ts) = par
 
     while True:
