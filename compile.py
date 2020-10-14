@@ -14,7 +14,6 @@ def compile(code):
 
 
 
-
 def main():
     if len(sys.argv) <= 1:
         print("Missing arguments")

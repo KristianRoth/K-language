@@ -20,8 +20,6 @@ def test_statement_b():
     assert ts.count(("statement_end", "statement_end")) == 8
 
 def test_function_call_params():
-    expected = [('statement_start', 'statement_start'), ('function_call', 'test'), ('additional_parameter', 'aditional_parameter'), ('statement_start', 'statement_start'), ('statement_end', 'statement_end'), ('additional_parameter', 'aditional_parameter'), ('statement_start', 'statement_start'), ('statement_end', 'statement_end'), ('statement_end', 'statement_end')]
-
     code = _getTestCode("test3.k")
     ts = tokenify((code, []))
     assert len(ts) == 9

@@ -1,6 +1,4 @@
 from Tree import Node
-import sys
-sys.setrecursionlimit(50)
 
 def makeTree(ts, tree):
     while True:
@@ -54,12 +52,5 @@ def makeTree(ts, tree):
             raise ValueError("Something went wrong identifier: " + key)
 
 def compiler(ts):
-
-
-    print("*********** START ************")
-
     (ts, tree) = makeTree(ts, Node("ROOT"))
-
-    print("************ END *************")
-    tree.prettyPrint()
-    print(ts)
+    return tree

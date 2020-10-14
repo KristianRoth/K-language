@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, data):
+    def __init__(self, data = ""):
         self.data = data
         self.parent = None
         self.children = []
@@ -27,3 +27,11 @@ class Node:
 
         for child in self.children:
             child.prettyPrint(indent+1)
+
+    def count(self):
+        if len(self.children) == 0: return 1
+        return 1 + sum(map(lambda x: x.count(), self.children))
+
+    def depth(self):
+        if len(self.children) == 0: return 1
+        return 1 + max(map(lambda x: x.depth(), self.children))
